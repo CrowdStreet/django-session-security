@@ -27,7 +27,7 @@ class SessionSecurityMiddleware(object):
     user if appropriate.
     """
 
-    def is_super_or_staff_user(self, request):
+    def bypass_logout(self, request):
         return (PREVENT_LOGOUT_FOR_SUPERUSERS and
                 (request.user.is_staff or request.user.is_superuser))
 
@@ -48,7 +48,7 @@ class SessionSecurityMiddleware(object):
 
         delta = now - get_last_activity(request.session)
         expire_seconds = self.get_expire_seconds(request)
-        if (not self.is_super_or_staff_user(request) and
+        if (not self.bypass_logout(request) and
                 delta >= timedelta(seconds=expire_seconds)):
             if EXPIRATION_MESSAGE:
                 messages.add_message(
