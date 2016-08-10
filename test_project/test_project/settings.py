@@ -152,7 +152,7 @@ INSTALLED_APPS = (
 
 SESSION_SECURITY_EXPIRE_AFTER = 10
 SESSION_SECURITY_WARN_AFTER = 5
-SESSION_SECURITY_EXPIRATION_MESSAGE = ('Logged out due to inactivity.')
+SESSION_SECURITY_EXPIRATION_MESSAGE = 'Logged out due to inactivity.'
 
 
 # A sample logging configuration. The only tangible logging
